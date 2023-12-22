@@ -1,19 +1,23 @@
-#include <stdlib.h>
-#include <stdio.h>
+// Implementation of a generic stack (last in, first out [LIFO]).
+//
+// Mustafa Al-Khafaji.
 
-typedef struct Node {
-    int data;
-    struct Node* next;
+#include <stdio.h>
+#include <stdlib.h>
+#include "stack.h"
+
+typedef struct _Node {
+    void* data;
+    struct _Node* next;
 } Node;
 
 
-typedef struct Stack {
+typedef struct _Stack {
     Node* head;
 } Stack;
 
 
-Stack* CreateStack() {
-
+Stack* Stack_Init() {
     Stack* stack = malloc(sizeof(Stack));
     stack->head = NULL;
 
@@ -21,60 +25,46 @@ Stack* CreateStack() {
 }
 
 
-int PushStack(Stack* stack, int data) {
-
+void Stack_Push(Stack* stack, void* data) {
     Node* newNode = malloc(sizeof(Node));
     newNode->data = data;
     newNode->next = stack->head;
 
     stack->head = newNode;
-
-    return 1;
 }
 
 
-int PopStack(Stack* stack) {
-
+void* Stack_Pop(Stack* stack) {
     if (stack->head == NULL) {
         return 0;
     }
 
     Node* temp = stack->head;
+    stack->head = temp->next;
 
-    stack->head = stack->head->next;
+    void* data = temp->data;
 
     free(temp);
 
-    return 1;
+    return data;
 }
 
 
-int PeekStack(Stack* stack) {
-
-    if (stack->head != NULL) {
-
-        int data = stack->head->data;
-
-        printf("%i\n", data);
-        return data;
-    }
-    else {
-        printf("NULL");
-        return 0;
-    }
+void* Stack_Peek(Stack* stack) {
+    return stack->head->data;
 }
 
 
-int PrintStack(Stack* stack) {
+/*
+void Stack_Print(Stack* stack) {
 
     Node* temp = stack->head;
     int index = 0;
 
     while (temp != NULL) {
-        printf("index: %i, data: %i\n", index, temp->data);
+        printf("index: %i, data: %i\n", index, *(int*)temp->data);
         temp = temp->next;
         index++;
     }
-
-    return 1;
 }
+*/

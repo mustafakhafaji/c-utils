@@ -1,7 +1,19 @@
-typedef struct Stack Stack;
+typedef struct _Stack Stack;
 
-Stack* CreateStack();
-int PushStack(Stack* stack, int data);
-int PopStack(Stack* stack);
-int PeekStack(Stack* stack);
-int PrintStack(Stack* stack);
+#define STACK_FAILURE 0
+#define STACK_SUCCESS 1
+
+// Allocates memory and returns a stack pointer.
+Stack* Stack_Init();
+
+// Adds pointer to the top of the stack.
+void Stack_Push(Stack* stack, void* data);
+
+// Returns and removes the top element in the given stack.
+void* Stack_Pop(Stack* stack);
+
+// Returns pointer to the top element in the given stack.
+void* Stack_Peek(Stack* stack);
+
+// Prints the contents of the given stack (for debugging purposes).
+//void Stack_Print(Stack* stack);
