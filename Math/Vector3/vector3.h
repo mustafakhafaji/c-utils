@@ -1,4 +1,8 @@
-typedef struct Vector3 Vector3;
+typedef struct Vector3 {
+   float x;
+   float y;
+   float z;
+} Vector3;
 
 Vector3* Vector3_Add(const Vector3* a, const Vector3* b);
 Vector3 Vector3_Multiply(const Vector3* a, const Vector3* b);
