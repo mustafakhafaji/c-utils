@@ -2,6 +2,9 @@ typedef struct Vector {
     float x, y, z, w;
 } Vector;
 
+// Create vector.
+Vector* Vector_Create(float x, float y, float z, float w);
+
 // Returns sum of 2 vectors.
 Vector* Vector_Add(const Vector* a, const Vector* b);
 
