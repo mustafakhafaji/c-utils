@@ -1,4 +1,6 @@
-typedef struct Vector Vector;
+typedef struct Vector {
+    float x, y, z, w;
+} Vector;
 
 // Returns sum of 2 vectors.
 Vector* Vector_Add(const Vector* a, const Vector* b);
