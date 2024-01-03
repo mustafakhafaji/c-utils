@@ -106,7 +106,6 @@ void* LinkedList_RemoveFromEnd(LinkedList* list) {
 
 /*
 void LinkedList_Print(LinkedList* list) {
-
     Node* temp = list->head;
     int index = 0;
 

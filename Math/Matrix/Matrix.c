@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <math.h>
-#include "../Vector/Vector.h"
+#include "../Vector3/Vector3.h"
 
 typedef struct Matrix {
     int size_m;
@@ -46,7 +46,7 @@ Matrix* Matrix_Multiply(const Matrix* a, const Matrix* b) {
     return c;
 }
 
-Matrix* Matrix_Translation(const Matrix* initial_matrix, const Vector* factor) {
+Matrix* Matrix_Translation(const Matrix* initial_matrix, const Vector3* factor) {
     Matrix* matrix = malloc(sizeof(Matrix));
 
     matrix->values[3] += factor->x;
@@ -57,7 +57,7 @@ Matrix* Matrix_Translation(const Matrix* initial_matrix, const Vector* factor) {
 }
 
 // TODO
-Matrix* Matrix_Rotation(const Matrix* initial_matrix, const float* angle, const Vector* planes) {
+Matrix* Matrix_Rotation(const Matrix* initial_matrix, const float* angle, const Vector3* planes) {
     
 }
 

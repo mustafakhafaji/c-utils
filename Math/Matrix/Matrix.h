@@ -1,4 +1,4 @@
-#include "../Vector/vector.h"
+#include "../Vector3/vector3.h"
 
 typedef struct Matrix Matrix;
 
@@ -12,10 +12,10 @@ Matrix* Matrix_Add(const Matrix* a, const Matrix* b);
 Matrix* Matrix_Multiply(const Matrix* a, const Matrix* b);
 
 // Returns translated matrix.
-Matrix* Matrix_Translation(const Matrix* initial_matrix, const Vector* factor);
+Matrix* Matrix_Translation(const Matrix* initial_matrix, const Vector3* factor);
 
 // Returns rotated matrix.
-Matrix* Matrix_Rotation(const Matrix* initial_matrix, const float* angle, const Vector* planes);
+Matrix* Matrix_Rotation(const Matrix* initial_matrix, const float* angle, const Vector3* planes);
 
 // Returns a perspective matrix.
 Matrix* Matrix_Perspective(
