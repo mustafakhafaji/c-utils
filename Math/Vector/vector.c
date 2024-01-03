@@ -6,6 +6,15 @@ typedef struct Vector {
     float x, y, z, w;
 } Vector;
 
+Vector* Vector_Create(float x, float y, float z, float w) {
+    Vector* vector = malloc(sizeof(Vector));
+    vector->x = x;
+    vector->y = y;
+    vector->z = z;
+    vector->w = w;
+    return vector;
+}
+
 Vector* Vector_Add(const Vector* a, const Vector* b) {
     Vector* c = malloc(sizeof(Vector));
     c->x = a->x + b->x;
