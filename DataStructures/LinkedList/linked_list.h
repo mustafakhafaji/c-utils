@@ -1,16 +1,26 @@
 typedef struct _LinkedList LinkedList;
 
+// Error codes:
+//
+// 0 - No error.
+// 1 - Linked list is empty.
+// 2 - Pointer error.
+// 3 - Unknown.
 #define LINKED_LIST_FAILURE 0
 #define LINKED_LIST_SUCCESS 1
 
-// Creates and returns an empty linked list pointer.
+// Creates an empty linked list.
+//
+// @return Pointer to LinkedList
 LinkedList* LinkedList_Init();
 
-// Frees a Linked List's memory.
+// Frees a linked list's memory.
+//
+// @param list LinkedList to free from memory.
 void LinkedList_Free(LinkedList* list);
 
 // Inserts an element to the beginning of a linked list.
-int LinkedList_InsertAtBeginning(LinkedList* list, void* data);
+void LinkedList_InsertAtBeginning(LinkedList* list, void* data);
 
 // Inserts an element to the end of a linked list.
 void LinkedList_InsertAtEnd(LinkedList* list, void* data);

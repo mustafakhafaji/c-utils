@@ -1,10 +1,5 @@
-// Queue (FIFO [first in, first out]) implementation.
-//
-// Mustafa Al-Khafaji
-
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "queue.h"
 
 typedef struct Node {
@@ -17,7 +12,7 @@ typedef struct Queue {
     Node* head;
     Node* tail;
     size_t length;
-    int error;
+    unsigned int error;
 } Queue;
 
 
@@ -33,6 +28,11 @@ Queue* Queue_Create() {
 
 void Queue_Enqueue(Queue* queue, void* data) {
     Node* node = malloc(sizeof(Node));
+    if (node == NULL) {
+        queue->error = 2;
+        return;
+    }
+
     node->data = data;
     node->next = NULL;
     
@@ -45,12 +45,14 @@ void Queue_Enqueue(Queue* queue, void* data) {
 
     queue->tail = node;
     queue->length++;
+    queue->error = 0;
 }
 
 
 void* Queue_Dequeue(Queue* queue) {
     if (queue->length == 0) {
-        queue->error = QUEUE_EMPTY;
+        queue->error = 1;
+        return;
     }
 
     Node* temp = queue->head;
@@ -60,6 +62,7 @@ void* Queue_Dequeue(Queue* queue) {
 
     free(temp);
     queue->length--;
+    queue->error = 0;
 
     return data;
 }

@@ -2,11 +2,7 @@
 #include <stdlib.h>
 #include "Vector3.h"
 
-typedef struct Vector3 {
-    float x, y, z;
-} Vector3;
-
-Vector3* Vector3_Create(float x, float y, float z, float w) {
+Vector3* Vector3_Create(float x, float y, float z) {
     Vector3* vector = malloc(sizeof(Vector3));
     vector->x = x;
     vector->y = y;
@@ -46,7 +42,7 @@ int Vector3_isEqual(const Vector3* a, const Vector3* b) {
     );
 }
 
-float Vector3_Length(const Vector3* a) {
+double Vector3_Length(const Vector3* a) {
     return sqrt(
         a->x * a->x +
         a->y * a->y +

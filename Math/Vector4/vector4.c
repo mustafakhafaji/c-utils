@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include "Vector4.h"
 
-typedef struct Vector4 {
-    float x, y, z, w;
-} Vector4;
-
 Vector4* Vector4_Create(float x, float y, float z, float w) {
     Vector4* vector = malloc(sizeof(Vector4));
     vector->x = x;
@@ -50,7 +46,7 @@ int Vector4_isEqual(const Vector4* a, const Vector4* b) {
     a->w == a->w;
 }
 
-float Vector4_Length(const Vector4* a) {
+double Vector4_Length(const Vector4* a) {
     return sqrt(
         a->x * a->x +
         a->y * a->y +

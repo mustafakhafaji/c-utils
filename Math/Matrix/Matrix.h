@@ -2,13 +2,23 @@
 
 typedef struct Matrix Matrix;
 
-// Returns a 4x4 identity matrix.
+// Initalizes a 4x4 identity matrix.
+//
+// @return pointer to 4x4 identity matrix.
 Matrix* Matrix_Create();
 
-// Returns sum of two matrices.
+// Adds two given matrices.
+//
+// @param a Matrix (a) + b
+// @param b Matrix a + (b)
+// @return pointer to 4x4 matrix of sum.
 Matrix* Matrix_Add(const Matrix* a, const Matrix* b);
 
-// Returns product of two matrices.
+// Multiplies two given matrices.
+//
+// @param a Matrix (a) * b
+// @param b Matrix a * (b)
+// @return pointer to 4x4 matrix of product.
 Matrix* Matrix_Multiply(const Matrix* a, const Matrix* b);
 
 // Returns translated matrix.

@@ -1,46 +1,50 @@
-// Implementation of a generic stack (last in, first out [LIFO]).
-//
-// Mustafa Al-Khafaji.
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "stack.h"
 
 typedef struct _Node {
-    void* data;
     struct _Node* next;
+    void* data;
 } Node;
 
 
 typedef struct _Stack {
     Node* head;
+    unsigned int error;
 } Stack;
 
 
 Stack* Stack_Init() {
     Stack* stack = malloc(sizeof(Stack));
     stack->head = NULL;
-
+    stack->error = 0;
     return stack;
 }
 
 
 void Stack_Push(Stack* stack, void* data) {
     Node* newNode = malloc(sizeof(Node));
+    if (newNode == NULL) {
+        stack->error = 2;
+    }
+
     newNode->data = data;
     newNode->next = stack->head;
 
     stack->head = newNode;
+    stack->error = 0;
 }
 
 
 void* Stack_Pop(Stack* stack) {
     if (stack->head == NULL) {
-        return 0;
+        stack->error = 1;
+        return;
     }
 
     Node* temp = stack->head;
     stack->head = temp->next;
+    stack->error = 0;
 
     void* data = temp->data;
 
@@ -51,6 +55,12 @@ void* Stack_Pop(Stack* stack) {
 
 
 void* Stack_Peek(Stack* stack) {
+    if (stack->head == NULL) {
+        stack->error = 1;
+        return;
+    }
+
+    stack->error = 0;
     return stack->head->data;
 }
 

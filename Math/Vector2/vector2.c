@@ -2,11 +2,7 @@
 #include <stdlib.h>
 #include "Vector2.h"
 
-typedef struct Vector2 {
-    float x, y;
-} Vector2;
-
-Vector2* Vector2_Create(float x, float y, float z, float w) {
+Vector2* Vector2_Create(float x, float y) {
     Vector2* vector = malloc(sizeof(Vector2));
     vector->x = x;
     vector->y = y;
@@ -40,7 +36,7 @@ int Vector2_isEqual(const Vector2* a, const Vector2* b) {
     a->y == b->y;
 }
 
-float Vector2_Length(const Vector2* a) {
+double Vector2_Length(const Vector2* a) {
     return sqrt(
         a->x * a->x +
         a->y * a->y
